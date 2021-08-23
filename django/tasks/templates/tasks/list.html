@@ -1,11 +1,33 @@
-<h3>To Do</h3>
-<form method="POST" action="/">
-    {% csrf_token %}
-    {{forms.title}}
-    <input type="submit" name="Create task">
-</form>
-{% for task in tasks %}
-    <div>
-        <p>{{task}}</p>
-    </div>
-{% endfor %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+<style>
+.center-column{
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px auto;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 6px 2px 3-px 0px rgba(0,0,0,0.75);
+}
+</style>
+
+<div class="center-column">
+    <h3>To Do</h3>
+    <form method="POST" action="/">
+        {% csrf_token %}
+        {{form.title}}
+        <input class="btn btn-primary" value="Add Task" type="submit" name="Create task"></input>
+    </form>
+    {% for task in tasks %}
+        <div>
+            <a href="{% url 'update' task.id %}">Update</a>
+            <a href="{% url 'delete' task.id %}">Delete</a>
+            
+            {% if task.completed == True %}
+            <s>{{task}}</s>
+            {% else %}
+            <span>{{task}}</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
