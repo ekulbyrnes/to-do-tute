@@ -3,8 +3,8 @@ from django.forms import ModelForm
 
 from .models import *
 
-class TaskForm(forms.ModelForm):
+class callsignForm(forms.ModelForm):
     
     class Meta:
-        model = Task
+        model = callsign
         fields = '__all__'

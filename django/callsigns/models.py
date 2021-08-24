@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Task(models.Model):
+class callsign(models.Model):
     title = models.CharField(max_length=200)
     completed = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)

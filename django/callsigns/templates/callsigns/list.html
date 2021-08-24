@@ -12,22 +12,21 @@
 </style>
 
 <div class="center-column">
-    <h3>To Do</h3>
+    <h3>Callsigns Checked In</h3>
     <form method="POST" action="/">
         {% csrf_token %}
         {{form.title}}
-        <input class="btn btn-primary" value="Add Task" type="submit" name="Create task"></input>
+        <input class="btn btn-primary" value="Log callsign" type="submit" name="Log callsign"></input>
     </form>
-    {% for task in tasks %}
+    {% for callsign in callsigns %}
         <div>
-            <a href="{% url 'update' task.id %}">Update</a>
-            <a href="{% url 'delete' task.id %}">Delete</a>
-            
-            {% if task.completed == True %}
-            <s>{{task}}</s>
+            {% if callsign.completed == True %}
+            <s>{{callsign}}</s>
             {% else %}
-            <span>{{task}}</span>
+            <span>{{callsign}}</span>
             {% endif %}
+            <a href="{% url 'update' callsign.id %}">Update</a>
+            <a href="{% url 'delete' callsign.id %}">Delete</a>
         </div>
     {% endfor %}
 </div>

@@ -24,5 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # Add this to set up authentication for REST framework
     #path('api-auth/', include('rest_framework.urls')),
-    path('', include ('tasks.urls'))
+    path('', include ('callsigns.urls'))
 ]

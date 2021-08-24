@@ -6,44 +6,44 @@ from .forms import *
 
 # Create your views here.
 
-# Create Tasks
+# Create Callsigns
 def index(request):
-    tasks = Task.objects.all()
+    callsigns = callsign.objects.all()
     
-    form = TaskForm()
+    form = callsignForm()
     
     if request.method =='POST':
-        form = TaskForm(request.POST)
+        form = callsignForm(request.POST)
         if form.is_valid():
             form.save()
         return redirect('/')
 
-    context = {'tasks':tasks, 'form':form}    
-    return render(request, 'tasks/list.html', context)
+    context = {'callsigns':callsigns, 'form':form}    
+    return render(request, 'callsigns/list.html', context)
 
-# Update tasks
+# Update callsigns
 def update(request, pk):
-    task = Task.objects.get(id=pk)
+    callsigns = callsign.objects.get(id=pk)
 
-    form = TaskForm(instance=task)
+    form = callsignForm(instance=callsigns)
 
     if request.method == 'POST':
-        form = TaskForm(request.POST, instance=task)
+        form = callsignForm(request.POST, instance=callsigns)
         if form.is_valid():
             form.save()
             return redirect('/')
 
     context = {'form':form}
 
-    return render(request, 'tasks/update.html', context)
+    return render(request, 'callsigns/update.html', context)
 
-# Delete task
+# Delete callsign
 def delete(request, pk):
-    item = Task.objects.get(id=pk)
+    item = callsign.objects.get(id=pk)
 
     if request.method == 'POST':
         item.delete()
         return redirect('/')
 
     context = {'item':item}
-    return render(request, 'tasks/delete.html', context)
+    return render(request, 'callsigns/delete.html', context)
