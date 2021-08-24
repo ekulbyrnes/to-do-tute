@@ -54,7 +54,8 @@ INSTALLED_APPS = [
     # Include this to build REST APIs
     'rest_framework',
     # Include this to build on top of Boostrap 4
-    'bootstrap4',
+    #'bootstrap4',
+    'tasks',
 ]
 
 MIDDLEWARE = [
